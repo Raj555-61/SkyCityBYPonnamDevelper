@@ -1,66 +1,46 @@
 document.addEventListener("DOMContentLoaded", function () {
     let popup = document.getElementById("promoPopup");
     let closeBtn = document.getElementById("closePopup");
-    let formSubmitted = false; // Track form submission
-    let popupClosedManually = false; // Track manual close
+    let formSubmitted = false;
 
-    // Show popup when the page loads
+    // Show popup once when the page loads
     function showPopup() {
         if (!formSubmitted) {
             popup.style.display = "block";
         }
     }
 
-    // Close popup and allow it to reappear later
     function closePopup() {
         popup.style.display = "none";
-        popupClosedManually = true;
-
-        // Allow reappearing only if form is NOT submitted
-        if (!formSubmitted) {
-            document.addEventListener("scroll", triggerPopup);
-            document.addEventListener("mousemove", triggerPopup);
-        }
     }
 
-    // Function to trigger popup again on scroll or hover
-    function triggerPopup() {
-        if (popupClosedManually && !formSubmitted) {
-            popupClosedManually = false; // Reset flag
-            showPopup();
+    function submitForm(event, formId) {
+        event.preventDefault();
 
-            // Remove event listeners to prevent infinite popups
-            document.removeEventListener("scroll", triggerPopup);
-            document.removeEventListener("mousemove", triggerPopup);
-        }
-    }
-
-    // Submit popup form and prevent further popups
-    function submitPopupForm() {
-        let fullName = document.getElementById("popupFullName").value;
-        let phoneNumber = document.getElementById("popupPhoneNumber").value;
-        let emailAddress = document.getElementById("popupEmailAddress").value;
+        let fullName = document.getElementById(`${formId}FullName`).value;
+        let phoneNumber = document.getElementById(`${formId}PhoneNumber`).value;
+        let emailAddress = document.getElementById(`${formId}EmailAddress`).value;
 
         if (fullName === "" || phoneNumber === "" || emailAddress === "") {
             alert("Please fill in all fields.");
             return;
         }
 
-        console.log("Popup form submitted:", { fullName, phoneNumber, emailAddress });
+        console.log("Form submitted:", { fullName, phoneNumber, emailAddress });
+
+        // Send form data to email
+        let mailtoLink = `mailto:infovirar@gmail.com?subject=New Inquiry&body=Name: ${fullName}%0APhone: ${phoneNumber}%0AEmail: ${emailAddress}`;
+        window.location.href = mailtoLink;
+
         alert("Thank you for your submission!");
 
         formSubmitted = true;
         popup.style.display = "none";
-
-        // Remove event listeners to fully stop popup
-        document.removeEventListener("scroll", triggerPopup);
-        document.removeEventListener("mousemove", triggerPopup);
     }
 
-    // Attach functions to buttons
+    document.getElementById("popupForm").addEventListener("submit", (event) => submitForm(event, "popup"));
+    document.getElementById("bottomForm").addEventListener("submit", (event) => submitForm(event, "bottom"));
     closeBtn.addEventListener("click", closePopup);
-    document.querySelector("button").addEventListener("click", submitPopupForm);
 
-    // Show popup when the page loads
-    showPopup();
+    showPopup(); // Show popup once on page load
 });
