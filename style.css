@@ -1,0 +1,269 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.organize-visit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.map-section {
+    width: 100%;
+}
+
+.map-container {
+    width: 100%;
+}
+
+.content-section {
+    display: flex;
+    padding: 20px;
+}
+
+.main-content {
+    flex: 2;
+}
+
+.sidebar {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.request-call, form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form input {
+    width: 94%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.maharera-link {
+    display: block;
+    margin-bottom: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.project-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.detail-item {
+    flex: 1;
+    padding: 10px;
+}
+
+.qr-code {
+    width: 100px;
+    height: 100px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Additions from previous inline styles */
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.whatsapp-icon,
+.call-icon {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.slideshow-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    width: 100%;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.project-summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.summary-item {
+    text-align: center;
+    margin: 10px;
+    width: 20%;
+}
+
+.summary-value {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.summary-label {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.project-description {
+    padding: 20px;
+}
+
+.location-advantages {
+    text-align: center;
+    padding: 50px;
+}
+
+.category {
+    display: inline-block;
+    width: 200px;
+    margin: 20px;
+    text-align: left;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.icon.loaded {
+    opacity: 1;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+li.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#image-display {
+    display: none;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+#displayed-image {
+    max-width: 90vw;
+    max-height: 90vh;
+}
