@@ -10,6 +10,9 @@ header {
     align-items: center;
     padding: 10px 20px;
     background-color: #f0f0f0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo img {
@@ -19,6 +22,7 @@ header {
 nav ul {
     list-style: none;
     display: flex;
+    padding: 0;
 }
 
 nav li {
@@ -36,18 +40,21 @@ nav a {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.map-section {
-    width: 100%;
+.organize-visit:hover {
+    background-color: #0056b3;
 }
 
-.map-container {
+.map-section, .map-container {
     width: 100%;
 }
 
 .content-section {
     display: flex;
+    flex-wrap: wrap;
     padding: 20px;
 }
 
@@ -61,7 +68,7 @@ nav a {
     background-color: #f9f9f9;
 }
 
-.request-call, form button {
+button, .request-call, form button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -69,6 +76,13 @@ nav a {
     cursor: pointer;
     width: 100%;
     margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover, .request-call:hover, form button:hover {
+    background-color: #388E3C;
 }
 
 form input {
@@ -78,29 +92,6 @@ form input {
     border: 1px solid #ccc;
 }
 
-.maharera-link {
-    display: block;
-    margin-bottom: 10px;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.project-details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.detail-item {
-    flex: 1;
-    padding: 10px;
-}
-
-.qr-code {
-    width: 100px;
-    height: 100px;
-}
-
 footer {
     background-color: #333;
     color: white;
@@ -108,7 +99,6 @@ footer {
     padding: 10px;
 }
 
-/* Additions from previous inline styles */
 .popup {
     display: none;
     position: fixed;
@@ -117,9 +107,10 @@ footer {
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     z-index: 1000;
+    max-width: 90%;
 }
 
 .popup-content {
@@ -130,15 +121,9 @@ footer {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
-}
-
-.whatsapp-icon,
-.call-icon {
-    width: 30px;
-    height: 30px;
-    margin-top: 10px;
+    color: red;
 }
 
 .slideshow-container {
@@ -149,36 +134,12 @@ footer {
 
 .mySlides {
     display: none;
+    animation: fade 1s ease-in-out;
 }
 
-.mySlides img {
-    width: 100%;
-}
-
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+@keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
 }
 
 .project-summary {
@@ -211,13 +172,6 @@ footer {
 .location-advantages {
     text-align: center;
     padding: 50px;
-}
-
-.category {
-    display: inline-block;
-    width: 200px;
-    margin: 20px;
-    text-align: left;
 }
 
 .icon {
@@ -266,4 +220,38 @@ li.loaded {
 #displayed-image {
     max-width: 90vw;
     max-height: 90vh;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .content-section {
+        flex-direction: column;
+    }
+
+    .main-content, .sidebar {
+        flex: none;
+        width: 100%;
+    }
+
+    .summary-item {
+        width: 45%;
+    }
+
+    .project-details {
+        flex-direction: column;
+    }
 }
